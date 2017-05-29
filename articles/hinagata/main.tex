@@ -1,0 +1,108 @@
+\documentclass{word}
+\usepackage{word-pdf}
+\usepackage{wordlogo}
+\usepackage{fancybox}
+\usepackage{url}
+\usepackage{listings}
+
+\lstset{%
+	basicstyle=\ttfamily,
+	commentstyle=\textit,
+	frame=trBL,
+	numbers=left,
+	breaklines=true,
+}
+
+\articletitle{記事の書き方}
+\articleauthor{hoge}
+\articleheader{ヘッダ}
+
+\begin{document}
+\makearticletitle
+\section{はじめに}
+\subsection{p\LaTeX を使う}
+
+\subsubsection{macOS・Linux}
+
+$article\_name$は適当な名前として、以下のようなコマンドでブランチを分けましょう。
+
+\begin{lstlisting}[mathescape]
+git submodule update --init
+git checkout -b personal/$username$/$article\_name$
+cd ./articles
+cp -r ./hinagata ./my-article-name
+cd ./my-article-name
+autoconf
+./configure
+\end{lstlisting}
+
+\subsubsection{Windows}
+
+\WORD クラスファイルはWindowsでもコンパイルすることができます。
+次のように\lstinline|cmake|を使います。
+
+\begin{lstlisting}[mathescape]
+git submodule update --init
+git checkout -b personal/$username$/$article\_name$
+cd ./articles
+cp -r ./hinagata ./my-article-name
+cd ./my-article-name
+cmake -DENABLE_LUATEX=OFF .
+\end{lstlisting}
+\subsection{Lua\LaTeX を使う}
+\lstinline|./configure|のかわりに\lstinline|./configure --enable-luatex|としてください。
+Windowsの場合は、\lstinline|cmake -DENABLE_LUATEF=OFF -DENABLE_XETEX=OFF .|のかわりに
+\lstinline|cmake -DENABLE_LUATEX=ON -DENABLE_XETEX=ON .|としてください。
+
+\subsection{Xe\LaTeX を使う}
+
+\section{記事を書く}
+記事を書いたら、\lstinline|make|コマンドでビルドできます。
+Windowsの場合は\lstinline|cmake|コマンドでビルドします。
+
+\subsection{macOS・Linux}
+
+\begin{lstlisting}
+git add *
+make
+\end{lstlisting}
+
+\subsection{Windows}
+
+\begin{lstlisting}
+git add *
+cmake --build .
+\end{lstlisting}
+
+これで\ovalbox{main.pdf}が生成されれば成功です。
+あとは\ovalbox{main.tex}を編集すれば記事が出来ます。
+
+\section{Gitサーバにpushする}
+
+記事のキリの良いところで\lstinline|git push|するといいのですが、最初のpushの時には、
+origin\footnote{ここではWORDのGitサーバである\url{gitolite.word-ac.net}のことです}%
+に新しいブランチを登録する必要があります。それは以下のようにしましょう。
+
+\begin{lstlisting}[mathescape]
+git push origin personal/$username$/$article\_name$
+\end{lstlisting}
+
+pushを成功させた場合には、ビルドの結果がslack\footnote{\url{https://word-ac.slack.com}}の\#jenkinsチャンネルに流れます。
+slackを見ていない場合は、\url{https://jenkins.word-ac.net/job/LaTeX/}および\url{https://gitiles.word-ac.net/}を見ると良いでしょう。
+
+\section{トラブルシューティング}
+\subsection{偶数頁}
+編集作業をしていると、レイアウトの問題で偶数頁から開始していただくことがあります。
+その場合の対処法は、
+\lstinline|\documentclass|のオプションに\ovalbox{evenstart}をつけることで簡単にできます。
+
+\begin{lstlisting}[language=TeX, mathescape]
+\documentclass[evenstart]{word}
+\end{lstlisting}
+
+\section{他の問題について}
+問題があればslackの\#latexチャンネルや、編集会議で聞くと良いでしょう。
+
+bxjsarticleを基にした新クラスについて聞く場合、@hidaruma\footnote{\url{https://twitter.com/hid_alma1026}}までどうぞ。
+
+\end{document}

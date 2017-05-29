@@ -1,3 +1,6 @@
 [submodule "texfiles"]
 	path = texfiles
 	url = https://github.com/hidaruma/texfiles.git
+[submodule "word-standard-styles"]
+	path = word-standard-styles
+	url = https://github.com/hidaruma/word-standard-styles.git
