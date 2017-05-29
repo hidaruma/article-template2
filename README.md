@@ -42,7 +42,7 @@ WORD編集部の人間ではない場合、著者の前に付く「文　編集�
 LuaLaTeX、XeLaTeXで上記コマンドを打ってもヒラギノ書体で出力されない場合、`kpsewhich updmap.cfg`で表示されたupdmap.cfg
 に`kanjiEmbed hiragino-pron`を追記してください。
 
-macOSのバージョンがEl Capitanである、などの場合はGoogle検索をするなどをしてください（後日追記の可能性有り）。
+OSのバージョンがEl Capitanである、などの場合はGoogle検索をするなどをしてください（後日追記の可能性有り）。
 
 ## 質問
 
