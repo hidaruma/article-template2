@@ -36,6 +36,14 @@ WORD編集部の人間ではない場合、著者の前に付く「文　編集�
 \documentclass[evenstart]{word}
 ```
 
+## 何か良く分からないけどフォントがヒラギノにならない
+ヒラギノフォントが入っていない場合はmacOSにしてヒラギノフォントを入手する、ヒラギノ書体を買うなどをしてください。
+フォントがtexliveに認識されているがヒラギノにならない場合、先ず`kanji-config-updmap hiragino-pron`を打ってください。
+LuaLaTeX、XeLaTeXで上記コマンドを打ってもヒラギノ書体で出力されない場合、`kpsewhich updmap.cfg`で表示されたupdmap.cfg
+に`kanjiEmbed hiragino-pron`を追記してください。
+
+macOSのバージョンがEl Capitanである、などの場合はGoogle検索をするなどをしてください（後日追記の可能性有り）。
+
 ## 質問
 
 @hidarumaへ。
