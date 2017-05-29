@@ -1,11 +1,11 @@
 # article-template2
 破壊的な変更しかし変わらない成果物
 
-#WORD記事の雛形実験版
+# WORD記事の雛形実験版
 
 これはhidarumaが個人的に実験中の、WORD記事の雛形です。
 
-##使い方
+## 使い方
 
 ### macOS・Linux
 
